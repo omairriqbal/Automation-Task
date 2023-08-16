@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.11.4 on win32)" generated="20230816 16:32:59.808" rpa="false" schemaversion="3">
+<suite id="s1" name="PortalCases" source="D:\Automation\Deriv-Automation-Task\Web-Task\Tests\PortalCases.robot">
+<test id="s1-t1" name="Validate Sucessful Login" line="8">
+<kw name="Open the Browser" library="LoginPage">
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>0.2</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20230816 16:32:59.997" endtime="20230816 16:32:59.997"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230816 16:32:59.997" level="INFO">Opening browser 'chrome' to base url 'https://opensource-demo.orangehrmlive.com'.</msg>
+<msg timestamp="20230816 16:32:59.997" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230816 16:32:59.997" endtime="20230816 16:33:07.592"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230816 16:33:07.592" endtime="20230816 16:33:07.937"/>
+</kw>
+<status status="PASS" starttime="20230816 16:32:59.997" endtime="20230816 16:33:07.937"/>
+</kw>
+<kw name="Fill the Login Form" library="LoginPage">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${user_name}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230816 16:33:07.937" endtime="20230816 16:33:08.230"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${user_name}</arg>
+<arg>admin</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:08.230" level="INFO">Typing text 'admin' into text field 'css:[name='username']'.</msg>
+<status status="PASS" starttime="20230816 16:33:08.230" endtime="20230816 16:33:08.999"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${user_password}</arg>
+<arg>admin123</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:08.999" level="INFO">Typing password into text field 'css:[name='password']'.</msg>
+<msg timestamp="20230816 16:33:09.471" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230816 16:33:09.754" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230816 16:33:08.999" endtime="20230816 16:33:09.754"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${login_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:09.754" level="INFO">Clicking element 'css:[type='submit']'.</msg>
+<status status="PASS" starttime="20230816 16:33:09.754" endtime="20230816 16:33:11.943"/>
+</kw>
+<status status="PASS" starttime="20230816 16:33:07.937" endtime="20230816 16:33:11.943"/>
+</kw>
+<status status="PASS" starttime="20230816 16:32:59.982" endtime="20230816 16:33:11.943"/>
+</test>
+<test id="s1-t2" name="Open MyInfo and Update DOB" line="12">
+<kw name="Verify the My Info page is fully loaded" library="MyInfoPage">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${my_info}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230816 16:33:11.943" endtime="20230816 16:33:12.579"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${my_info}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:12.579" level="INFO">Clicking element 'xpath:(//*[@class='oxd-text oxd-text--span oxd-main-menu-item--name'])[6]'.</msg>
+<status status="PASS" starttime="20230816 16:33:12.579" endtime="20230816 16:33:14.654"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<var>${readyState}</var>
+<arg>return document.readyState</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20230816 16:33:14.654" level="INFO">Executing JavaScript:
+return document.readyState
+Without any arguments.</msg>
+<msg timestamp="20230816 16:33:14.871" level="INFO">${readyState} = complete</msg>
+<status status="PASS" starttime="20230816 16:33:14.654" endtime="20230816 16:33:14.871"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${readyState}</arg>
+<arg>complete</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230816 16:33:14.871" endtime="20230816 16:33:14.871"/>
+</kw>
+<status status="PASS" starttime="20230816 16:33:11.943" endtime="20230816 16:33:14.871"/>
+</kw>
+<kw name="Verify “Date of Birth” field is filled in" library="MyInfoPage">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${dob_field}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230816 16:33:14.871" endtime="20230816 16:33:15.217"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${dob_filled}</var>
+<arg>"${dob_field}" != "${EMPTY}"</arg>
+<arg>Set Variable</arg>
+<arg>True</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Set Variable" library="BuiltIn">
+<arg>True</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" starttime="20230816 16:33:15.219" endtime="20230816 16:33:15.219"/>
+</kw>
+<msg timestamp="20230816 16:33:15.219" level="INFO">${dob_filled} = True</msg>
+<status status="PASS" starttime="20230816 16:33:15.217" endtime="20230816 16:33:15.219"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${dob_filled}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20230816 16:33:15.219" endtime="20230816 16:33:15.219"/>
+</kw>
+<status status="PASS" starttime="20230816 16:33:14.871" endtime="20230816 16:33:15.219"/>
+</kw>
+<kw name="Update the Date of Birth" library="MyInfoPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${loading_spinner}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230816 16:33:15.219" endtime="20230816 16:33:15.688"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>${loading_spinner}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20230816 16:33:15.688" endtime="20230816 16:33:16.568"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${calendar_icon}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230816 16:33:16.568" endtime="20230816 16:33:16.798"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${calendar_icon}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:16.798" level="INFO">Clicking element 'xpath:(//i[@class="oxd-icon bi-calendar oxd-date-input-icon"])[2]'.</msg>
+<status status="PASS" starttime="20230816 16:33:16.798" endtime="20230816 16:33:17.290"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${clear_btn}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230816 16:33:17.290" endtime="20230816 16:33:17.517"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${clear_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:17.517" level="INFO">Clicking element 'xpath:(//div[@class='oxd-date-input-link --clear'])'.</msg>
+<status status="PASS" starttime="20230816 16:33:17.517" endtime="20230816 16:33:18.016"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${dob_field}</arg>
+<arg>2021-07-19</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:18.016" level="INFO">Typing text '2021-07-19' into text field 'xpath:(//div[@class='oxd-date-input']/input)[2]'.</msg>
+<status status="PASS" starttime="20230816 16:33:18.016" endtime="20230816 16:33:18.718"/>
+</kw>
+<kw name="Get Value" library="SeleniumLibrary">
+<var>${dob_value}</var>
+<arg>${dob_field}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:19.156" level="INFO">${dob_value} = 2021-07-19</msg>
+<status status="PASS" starttime="20230816 16:33:18.718" endtime="20230816 16:33:19.156"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${dob_value}</arg>
+<arg>2021-07-19</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230816 16:33:19.156" endtime="20230816 16:33:19.156"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>none</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230816 16:33:19.156" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20230816 16:33:19.156" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20230816 16:33:19.156" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20230816 16:33:19.156" endtime="20230816 16:33:19.387"/>
+</kw>
+<status status="PASS" starttime="20230816 16:33:15.219" endtime="20230816 16:33:19.387"/>
+</kw>
+<status status="PASS" starttime="20230816 16:33:11.943" endtime="20230816 16:33:19.387"/>
+</test>
+<test id="s1-t3" name="Validate Successful Logout" line="17">
+<kw name="Click on Dropdown and Then Click Logout" library="LoginPage">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${user_dropdown}</arg>
+<arg>20s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230816 16:33:19.387" endtime="20230816 16:33:19.609"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${user_dropdown}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:19.609" level="INFO">Clicking element 'css:.oxd-userdropdown-tab'.</msg>
+<status status="PASS" starttime="20230816 16:33:19.609" endtime="20230816 16:33:20.088"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${logout_button}</arg>
+<arg>20s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230816 16:33:20.088" endtime="20230816 16:33:20.310"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${logout_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230816 16:33:20.310" level="INFO">Clicking element 'xpath:(//*[@class='oxd-userdropdown-link'])[4]'.</msg>
+<status status="PASS" starttime="20230816 16:33:20.310" endtime="20230816 16:33:21.800"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${login_button}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230816 16:33:21.800" endtime="20230816 16:33:22.435"/>
+</kw>
+<status status="PASS" starttime="20230816 16:33:19.387" endtime="20230816 16:33:22.435"/>
+</kw>
+<status status="PASS" starttime="20230816 16:33:19.387" endtime="20230816 16:33:22.435"/>
+</test>
+<doc>Suite description</doc>
+<status status="PASS" starttime="20230816 16:32:59.808" endtime="20230816 16:33:22.435"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="PortalCases">PortalCases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
